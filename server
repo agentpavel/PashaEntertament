@@ -47,3 +47,7 @@ const port = process.env.PORT || 13002;
 app.listen(port, function () {
     console.log('Sample CORE api is running on port ' + port);
 });
+
+
+
+Error: Missing credentials for "PLAIN" at SMTPConnection._formatError (D:\development\NodeJS\app_core\node_modules\nodemailer\lib\smtp-connection\index.js:774:19) at SMTPConnection.login (D:\development\NodeJS\app_core\node_modules\nodemailer\lib\smtp-connection\index.js:445:38) at connection.connect (D:\development\NodeJS\app_core\node_modules\nodemailer\lib\smtp-transport\index.js:271:32) at SMTPConnection.once (D:\development\NodeJS\app_core\node_modules\nodemailer\lib\smtp-connection\index.js:200:17) at Object.onceWrapper (events.js:273:13) at SMTPConnection.emit (events.js:182:13) at SMTPConnection._actionEHLO (D:\development\NodeJS\app_core\node_modules\nodemailer\lib\smtp-connection\index.js:1302:14) at SMTPConnection._processResponse (D:\development\NodeJS\app_core\node_modules\nodemailer\lib\smtp-connection\index.js:933:20) at SMTPConnection._onData (D:\development\NodeJS\app_core\node_modules\nodemailer\lib\smtp-connection\index.js:739:14) at TLSSocket._socket.on.chunk (D:\development\NodeJS\app_core\node_modules\nodemailer\lib\smtp-connection\index.js:879:55) user = mdm@surgutneftegas.ru pass=17122018P@ssw0rd host=forward.oao.sng 25
