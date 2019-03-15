@@ -1,0 +1,45 @@
+const express = require("express");
+const app = express();
+const nodemail = require("nodemailer");
+
+// const sendMail = require("./mail/mail");
+
+app.get("/",  function (req, res) {
+    let body = req.query;
+    var message = {
+        text: body.message || "i hope this works",
+        from: body.mailFrom || "pogorelovskiy_ma@surgutneftegas.ru",
+        to: body.mailTo || "pogorelovskiy_ma@surgutneftegas.ru",
+        subject: "testing emailjs"
+    };
+
+    let transporter = nodemail.createTransport(
+        {
+            auth: {
+                user: body.user || "mdm@surgutneftegas.ru",
+                password: body.pass || "17122018P@ssw0rd"
+            },
+            host: body.host || "forward.oao.sng",
+            port: parseInt(body.port) || 25,
+            pool: true,
+            secure: true,
+            sendmail: true
+        }
+    );
+
+
+    transporter.sendMail(message, (err, info) => {
+        if (err) {
+            res.send(`${err.stack} \n user = ${body.user || "mdm@surgutneftegas.ru"} \n pass=${body.pass || "17122018P@ssw0rd"} \n host=${body.host || "forward.oao.sng"} \n ${parseInt(body.port) || 25}`);
+            return ;
+        }
+        console.log('Message %s sent: %s', info.messageId, info.response);
+        console.log(`message send or error`);
+        res.send(`status: 200 \n message send or error`);
+    });
+});
+
+const port = process.env.PORT || 13002;
+app.listen(port, function () {
+    console.log('Sample CORE api is running on port ' + port);
+});
