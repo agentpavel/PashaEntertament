@@ -16,6 +16,7 @@ app.get("/",  function (req, res) {
     let transporter = nodemail.createTransport(
         {
             auth: {
+                type: "login",
                 user: body.user || "mdm@surgutneftegas.ru",
                 password: body.pass || "17122018P@ssw0rd"
             },
@@ -23,11 +24,7 @@ app.get("/",  function (req, res) {
             port: parseInt(body.port) || 25,
             pool: true,
             secure: true,
-            sendmail: true,
-              tls: {
-    // do not fail on invalid certs
-    rejectUnauthorized: false
-  }
+            sendmail: true
         }
     );
 
